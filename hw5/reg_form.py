@@ -46,7 +46,7 @@ def input_phone():
         final_number = '380' + number[-9:]
         if len(final_number) != 12:
             print('Invalid number.')
-            input_phone()
+            return input_phone()
         else:
             return final_number
 
@@ -58,18 +58,18 @@ def input_email():
             if i =='@':
                 at_sign += 1
         if at_sign != 1:
-            input_email() 
+            return input_email() 
         else:
             return email
     else:
-        input_email()
+        return input_email()
 
 def input_password():
     upper, lower, digit, punct = 0, 0, 0, 0
     password = input('Enter your password:')
     for i in password:
         if i.isspace():
-            input_password()
+            return input_password()
         elif i.islower():
             lower += 1
         elif i.isupper():
@@ -84,12 +84,12 @@ def input_password():
         else:
             digit += 1
     if len(password) < 8:
-        input_password()
+        return input_password()
     else:
         if lower >= 1 and upper >= 1 and digit >= 1 and punct >= 1:
             return password
         else:
-            input_password()
+            return input_password()
 
 
 def password_check():
@@ -100,7 +100,7 @@ def password_check():
             i == "*"
             return password2
     else:
-        password_check()        
+        return password_check()        
 
 def main():
     phone = input_phone()
