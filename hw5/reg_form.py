@@ -45,7 +45,7 @@ def input_phone():
                 final_number += i
         final_number = '380' + number[-9:]
         if len(final_number) != 12:
-            print('Invalid number.')
+            print('Непривильный номер.')
             return input_phone()
         else:
             return final_number
