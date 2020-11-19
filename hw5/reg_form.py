@@ -44,8 +44,7 @@ def input_phone():
             if i.isdigit():
                 final_number += i
         final_number = '380' + number[-9:]
-        if len(final_number) != 12:
-            print('Непривильный номер.')
+        if len(final_number) != 12
             return input_phone()
         else:
             return final_number
@@ -96,9 +95,7 @@ def password_check():
     password = input_password()
     password2 = input('Подтвердите пароль:') 
     if password2 == password: 
-        for i in password2:
-            i == "*"
-            return password2
+        return password2
     else:
         return password_check()        
 
@@ -107,9 +104,9 @@ def main():
     email = input_email()
     password = password_check() 
     print(
-    'Поздравляем с успешной регистрацией! '+
-    'Ваш номер телефона: ' + phone +
-    'Ваш email: ' + email +
+    'Поздравляем с успешной регистрацией! '+ '\n' +
+    'Ваш номер телефона: ' + phone + '\n' +
+    'Ваш email: ' + email + '\n' +
     'Ваш пароль: ' + password
     )
 main()
