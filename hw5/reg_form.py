@@ -38,7 +38,7 @@
 from string import punctuation
 
 def input_phone(): 
-        number = input('Enter phone number: ')
+        number = input('Введите ваш телефон: ')
         final_number = ''
         for i in number:
             if i.isdigit():
@@ -51,7 +51,7 @@ def input_phone():
             return final_number
 
 def input_email():
-    email = input('Enter your email:')
+    email = input('Введите ваш email:')
     at_sign = 0
     if len(email) >= 6:
         for i in email:
@@ -66,7 +66,7 @@ def input_email():
 
 def input_password():
     upper, lower, digit, punct = 0, 0, 0, 0
-    password = input('Enter your password:')
+    password = input('Введите пароль:')
     for i in password:
         if i.isspace():
             return input_password()
@@ -94,7 +94,7 @@ def input_password():
 
 def password_check():
     password = input_password()
-    password2 = input('Verify your password:') 
+    password2 = input('Подтвердите пароль:') 
     if password2 == password: 
         for i in password2:
             i == "*"
