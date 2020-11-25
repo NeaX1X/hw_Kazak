@@ -10,46 +10,40 @@
     - функцию choice из модуля random (для выборки случайного элемента из последовательности)
     - функцию randint из модуля random (для генерации случайной длины сложного пароля от 8 до 16 символов)
 '''
-dificulty = input()
 from random import randint, sample 
 from string import ascii_letters, ascii_lowercase, digits, punctuation
 
-if dificulty == '1':
-	def easy():
-		password = sample(ascii_lowercase, 8)
-		print(''.join(password))
-	easy()
 
-if dificulty == '2':
-	def normal():
-		letters_digits = ascii_letters + digits
-		password = sample(letters_digits, 8)
-		print(''.join(password))
-	normal()
+def main():
+	pw_difficulty = input('Enter a password difficulty (1, 2 or 3): ')
+	if pw_difficulty == '1':
+		print(gen_pw(ascii_lowercase))
+	elif pw_difficulty == '2':
+		print(gen_pw(ascii_letters + digits))
+	elif pw_difficulty == '3':
+		print(gen_strong())
 
-if dificulty == '3':
-	def hard():
-		everything = ascii_letters + digits + punctuation 
-		lenght = randint(8, 16)
-		password = sample(everything, lenght)
-		upper, lower, punct, digit = 0, 0, 0, 0
-		for i in password:
+
+def gen_pw(chars, length = 8):
+	password = ''.join(sample(chars, length))
+	return password
+
+
+def gen_strong():
+	password = gen_pw(ascii_letters + digits + punctuation, randint(8, 16))
+	upper = lower = digit = punct = 0
+	for i in password:
 			if i.islower():
 				lower += 1
 			elif i.isupper():
 				upper += 1
-			for p in punctuation:
-				if i == p:
-					punct += 1
-			try:
-				i = int(i)
-			except ValueError:
-				pass
-			else:
+			elif i.isdigit():
 				digit += 1
-		if lower >= 1 and upper >= 1 and digit >= 1 and punct >= 1:		
- 			return ''.join(password)
- 		else: 
- 			hard()
-	hard()
+			else:
+				punct += 1
+	if lower > 0 and upper > 0 and digit > 0 and punct > 0:	
+		return password
+	return gen_strong()
 
+
+main()
