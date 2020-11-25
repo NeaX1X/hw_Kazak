@@ -37,18 +37,17 @@
 """
 from string import punctuation
 
+
 def input_phone(): 
-        number = input('Введите ваш телефон: ')
-        final_number = ''
-        for i in number:
-            if i.isdigit():
-                final_number += i
-        final_number = '380' + number[-9:]
+    number = input('Введите ваш телефон: ')
+    number = re.sub(r'\D', '', number)
+    number = '380' + number[-9:]
         if len(final_number) != 12
             return input_phone()
         else:
             return final_number
 
+        
 def input_email():
     email = input('Введите ваш email:')
     at_sign = 0
@@ -63,6 +62,7 @@ def input_email():
     else:
         return input_email()
 
+    
 def input_password():
     upper, lower, digit, punct = 0, 0, 0, 0
     password = input('Введите пароль:')
@@ -73,15 +73,10 @@ def input_password():
             lower += 1
         elif i.isupper():
             upper += 1
-        for p in punctuation:
-            if i == p:
-                punct += 1
-        try:
-            i = int(i)
-        except ValueError:
-            pass
-        else:
+        elif i.digit():
             digit += 1
+        else:
+            punct += 1
     if len(password) < 8:
         return input_password()
     else:
@@ -99,6 +94,7 @@ def password_check():
     else:
         return password_check()        
 
+    
 def main():
     phone = input_phone()
     email = input_email()
@@ -109,5 +105,6 @@ def main():
     'Ваш email: ' + email + '\n' +
     'Ваш пароль: ' + password
     )
+    
+    
 main()
-
