@@ -42,7 +42,7 @@ def input_phone():
     number = input('Введите ваш телефон: ')
     number = re.sub(r'\D', '', number)
     number = '380' + number[-9:]
-        if len(final_number) != 12
+        if len(final_number) != 12:
             return input_phone()
         else:
             return final_number
@@ -73,7 +73,7 @@ def input_password():
             lower += 1
         elif i.isupper():
             upper += 1
-        elif i.digit():
+        elif i.isdigit():
             digit += 1
         else:
             punct += 1
