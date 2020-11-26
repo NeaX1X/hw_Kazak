@@ -30,24 +30,3 @@ def name():
 				file.close()
 						
 name()
-
-'''
-tmp = []
-path = '~/file1.txt' #substitute your path to file1
-path_final = '~/file2.txt' #substitute your path to file2
-with open(path, 'r') as file:
-    for x in file:
-     x = x.replace('\n','').replace(' ', '')
-     x = x[4:]   
-     tmp.append(x)
- 
-for x in range(len(tmp)):
- for i in tmp[x]:
-    more3 = tmp[x].count(i)
-    if more3 > 3:
-        with open(path, 'r') as f:
-         data = f.readlines()[x]
-         with open(path_final, 'a') as file2:
-             file2.write(data)
-         break
-'''
